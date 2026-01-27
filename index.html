@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jason Richards - Professional Pilot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #f8f9fa;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0a1929 0%, #1a2332 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-left h1 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .header-left .subtitle {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .header-right .contact-info {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .tabs {
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab-buttons {
+            display: flex;
+            overflow-x: auto;
+            border-bottom: 2px solid #e1e8ed;
+        }
+
+        .tab-button {
+            padding: 1rem 1.5rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #5a6c7d;
+            transition: all 0.3s;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            color: #0a1929;
+            background: #f8fafc;
+        }
+
+        .tab-button.active {
+            color: #0a1929;
+            border-bottom-color: #d4af37;
+            background: #f8fafc;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem 0;
+            animation: fadeIn 0.3s;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #5a6c7d;
+            margin-top: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .highlight-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin: 2rem 0;
+        }
+
+        .highlight-box h2 {
+            color: #0a1929;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .highlight-box h3 {
+            color: #0a1929;
+            margin: 1.5rem 0 0.75rem 0;
+            font-size: 1.2rem;
+        }
+
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlight-list li {
+            padding: 0.75rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .highlight-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .highlight-list li:last-child {
+            border-bottom: none;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #d4af37;
+            color: #0a1929;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            background: #c29d2f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
+        }
+
+        .info-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .info-section h2 {
+            color: #0a1929;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .info-section p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: #fff8e6;
+            color: #0a1929;
+            border: 1px solid #d4af37;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .status-active {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: #fff8e6;
+            color: #0a1929;
+            border: 1px solid #d4af37;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+
+        .aircraft-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .aircraft-item {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .aircraft-name {
+            font-weight: 600;
+            color: #0a1929;
+        }
+
+        .aircraft-hours {
+            color: #5a6c7d;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .header-right {
+                text-align: center;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            }
+
+            .stat-value {
+                font-size: 2rem;
+            }
+
+            .tab-buttons {
+                justify-content: flex-start;
+            }
+        }
+
+        .footer {
+            background: #0a1929;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .update-time {
+            font-size: 0.85rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <h1>Jason Richards</h1>
+                    <p class="subtitle">Commercial Pilot | Corporate & Owner Operations</p>
+                </div>
+                <div class="header-right">
+                    <div class="contact-info">
+                        <div>435-610-6179</div>
+                        <div>Jason.3.richards@gmail.com</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="tabs">
+        <div class="container">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab('home')">Home</button>
+                <button class="tab-button" onclick="openTab('experience')">Flight Experience</button>
+                <button class="tab-button" onclick="openTab('safety')">Safety & Professionalism</button>
+                <button class="tab-button" onclick="openTab('development')">Professional Development</button>
+                <button class="tab-button" onclick="openTab('about')">About Me</button>
+                <button class="tab-button" onclick="openTab('contact')">Contact</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- HOME TAB -->
+        <div id="home" class="tab-content active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-time">478.6</div>
+                    <div class="stat-label">Total Hours</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="pic-time">413.2</div>
+                    <div class="stat-label">PIC Hours</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="multi-time">17.2</div>
+                    <div class="stat-label">Multi-Engine</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="instrument-time">122.5</div>
+                    <div class="stat-label">Instrument</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h2>Professional Pilot for Corporate & Owner Operations</h2>
+                <div class="status-active">✈ Active & Current - Last flight: <span id="last-flight-date">Jan 24, 2026</span></div>
+                
+                <h3>Key Qualifications</h3>
+                <ul class="highlight-list">
+                    <li><strong>Certificates:</strong> Commercial Single Engine Land, Instrument Airplane</li>
+                    <li><strong>Active Flying:</strong> <span id="recent-hours">76.4</span> hours in last 90 days - <span id="recent-flights">38</span> flights demonstrating current proficiency</li>
+                    <li><strong>High-Performance Experience:</strong> 125+ hours TAA (glass cockpit), 27.7 hours complex aircraft time</li>
+                    <li><strong>Professional Background:</strong> Data Scientist with analytical approach to flight operations and decision-making</li>
+                    <li><strong>Business Aviation Ready:</strong> Professional communication, discretion, and customer service mindset</li>
+                    <li><strong>Insurance Friendly:</strong> 478.6 total hours, 413.2 PIC, strong instrument time, no incidents</li>
+                </ul>
+
+                <h3>Value Proposition for Aircraft Owners</h3>
+                <ul class="highlight-list">
+                    <li>Treat your aircraft with the care and professionalism it deserves</li>
+                    <li>Meticulous preflight planning and risk management approach</li>
+                    <li>Flexible scheduling and responsive communication</li>
+                    <li>Professional appearance and business aviation standards</li>
+                    <li>Transition ready for turbine aircraft (Cirrus Vision Jet, HondaJet, PC-12)</li>
+                    <li>Based in Utah, willing to relocate or travel for the right opportunity</li>
+                </ul>
+
+                <a href="#contact" class="cta-button" onclick="openTab('contact'); return false;">Schedule a Meeting</a>
+            </div>
+        </div>
+
+        <!-- FLIGHT EXPERIENCE TAB -->
+        <div id="experience" class="tab-content">
+            <div class="info-section">
+                <h2>Flight Time Summary</h2>
+                <p class="update-time">Live data from logbook - Updated: <span id="update-date">Jan 26, 2026</span></p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">478.6</div>
+                        <div class="stat-label">Total Time</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">413.2</div>
+                        <div class="stat-label">PIC</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">82.6</div>
+                        <div class="stat-label">Night</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">120.8</div>
+                        <div class="stat-label">Cross Country</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">122.5</div>
+                        <div class="stat-label">Instrument</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">17.2</div>
+                        <div class="stat-label">Multi-Engine</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">27.7</div>
+                        <div class="stat-label">Complex</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">125.4</div>
+                        <div class="stat-label">TAA/Glass</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Recent Flight Activity</h2>
+                <p>Consistent flying demonstrates active proficiency and currency.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">55.3</div>
+                        <div class="stat-label">Last 30 Days</div>
+                        <div class="aircraft-hours">26 flights</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">76.4</div>
+                        <div class="stat-label">Last 90 Days</div>
+                        <div class="aircraft-hours">38 flights</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">147.4</div>
+                        <div class="stat-label">Last 12 Months</div>
+                        <div class="aircraft-hours">87 flights</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Aircraft Experience</h2>
+                <p>Primary aircraft types with total hours in each:</p>
+                
+                <div class="aircraft-grid">
+                    <div class="aircraft-item">
+                        <div class="aircraft-name">Cessna 172 Skyhawk</div>
+                        <div class="aircraft-hours">77.8 hours</div>
+                    </div>
+                    <div class="aircraft-item">
+                        <div class="aircraft-name">Piper SportCruiser</div>
+                        <div class="aircraft-hours">77.7 hours (TAA)</div>
+                    </div>
+                    <div class="aircraft-item">
+                        <div class="aircraft-name">Czech Sport Aircraft</div>
+                        <div class="aircraft-hours">46.8 hours (TAA)</div>
+                    </div>
+                    <div class="aircraft-item">
+                        <div class="aircraft-name">Diamond DA-20 Katana</div>
+                        <div class="aircraft-hours">80+ hours combined</div>
+                    </div>
+                    <div class="aircraft-item">
+                        <div class="aircraft-name">Tecnam P2006T</div>
+                        <div class="aircraft-hours">17.2 hours (Multi-Engine)</div>
+                    </div>
+                    <div class="aircraft-item">
+                        <div class="aircraft-name">Cessna 152</div>
+                        <div class="aircraft-hours">26.1 hours</div>
+                    </div>
+                    <div class="aircraft-item">
+                        <div class="aircraft-name">PA-28 Cherokee</div>
+                        <div class="aircraft-hours">10.5 hours (Complex)</div>
+                    </div>
+                    <div class="aircraft-item">
+                        <div class="aircraft-name">Cessna 182 Skylane</div>
+                        <div class="aircraft-hours">2.1 hours (High Performance)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Operating Environment</h2>
+                <p>Extensive mountain and high-altitude operations experience:</p>
+                <ul class="highlight-list">
+                    <li>Regular operations in Utah, Colorado, Idaho, Nevada</li>
+                    <li>High-density altitude airports (5,000-7,000 ft MSL)</li>
+                    <li>Mountain flying with terrain considerations</li>
+                    <li>40+ takeoffs and landings at KSLC Class B airspace</li>
+                    <li>Experience with challenging weather conditions and crosswinds</li>
+                    <li>Cross-country flights through varied terrain</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SAFETY & PROFESSIONALISM TAB -->
+        <div id="safety" class="tab-content">
+            <div class="info-section">
+                <h2>Professional Standards</h2>
+                <p>Corporate aviation demands more than technical proficiency - it requires a commitment to professionalism, discretion, and treating each aircraft as if it were your own. I bring a business mindset to every flight operation.</p>
+            </div>
+
+            <div class="info-section">
+                <h2>Aircraft Stewardship</h2>
+                <p>Your aircraft represents a significant investment. I treat every aircraft with respect and care:</p>
+                
+                <ul class="highlight-list">
+                    <li><strong>Meticulous Preflight:</strong> Systematic walkaround with attention to detail, not rushing through checklist items</li>
+                    <li><strong>Conservative Operations:</strong> Smooth, precise flying that minimizes wear on aircraft systems and components</li>
+                    <li><strong>Proactive Maintenance:</strong> Immediate reporting of any squawks or anomalies, detailed write-ups for maintenance</li>
+                    <li><strong>Clean Cockpit:</strong> Leave the aircraft cleaner than I found it, organized and ready for next flight</li>
+                    <li><strong>Fuel Management:</strong> Strategic fuel planning to minimize unnecessary fuel stops while maintaining safety margins</li>
+                    <li><strong>Weather Awareness:</strong> Will not pressure myself to fly in marginal conditions - your aircraft's safety comes first</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Risk Management for Business Aviation</h2>
+                <p>Corporate flying requires balancing mission completion with safety. My approach:</p>
+                
+                <h3>Pre-Flight Decision Making</h3>
+                <ul class="highlight-list">
+                    <li>Thorough weather analysis including destination alternates and enroute conditions</li>
+                    <li>NOTAM review with attention to TFRs, airspace changes, and airport restrictions</li>
+                    <li>Weight & balance with realistic passenger/baggage assumptions</li>
+                    <li>Performance calculations for actual conditions, not book numbers</li>
+                    <li>Backup plans established before departure</li>
+                </ul>
+
+                <h3>Single-Pilot Resource Management</h3>
+                <ul class="highlight-list">
+                    <li>Automation management: know when to use it and when to hand-fly</li>
+                    <li>Workload management during high-density operations</li>
+                    <li>Checklist discipline - every time, every item</li>
+                    <li>Situational awareness through continuous cross-checking</li>
+                    <li>No hesitation to request ATC assistance or delay</li>
+                </ul>
+
+                <h3>Decision Points</h3>
+                <ul class="highlight-list">
+                    <li>Establish weather minimums for each flight based on conditions</li>
+                    <li>Know when to divert rather than continue to deteriorating destination</li>
+                    <li>Quick to return or delay rather than accept unacceptable risk</li>
+                    <li>Clear communication with passengers about delays or diversions</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Professionalism & Discretion</h2>
+                <p>Business aviation requires a higher standard of professional conduct:</p>
+                
+                <ul class="highlight-list">
+                    <li><strong>Appearance:</strong> Professional attire appropriate for business aviation operations</li>
+                    <li><strong>Communication:</strong> Clear, professional radio work and passenger briefings</li>
+                    <li><strong>Punctuality:</strong> Early for every flight, ready before passengers arrive</li>
+                    <li><strong>Discretion:</strong> Complete confidentiality regarding passengers, destinations, and business matters</li>
+                    <li><strong>Adaptability:</strong> Accommodate schedule changes and special requests professionally</li>
+                    <li><strong>Customer Service:</strong> Passenger comfort and experience are priorities while maintaining safety</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Continuous Safety Culture</h2>
+                <p>Safety is maintained through ongoing learning and self-assessment:</p>
+                
+                <ul class="highlight-list">
+                    <li>Regular review of ASRS reports and accident case studies</li>
+                    <li>Stay current on FARs, particularly Part 91 operations and changes</li>
+                    <li>Participate in recurrent training and safety seminars</li>
+                    <li>Seek feedback from more experienced pilots and mentors</li>
+                    <li>Debrief every flight to identify areas for improvement</li>
+                    <li>Practice emergency procedures regularly to maintain proficiency</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Insurance & Regulatory Compliance</h2>
+                <p>Understanding the business side of aviation operations:</p>
+                
+                <ul class="highlight-list">
+                    <li>Meet typical insurance requirements for complex and high-performance aircraft</li>
+                    <li>Clean record: no accidents, incidents, or violations</li>
+                    <li>Current FAA medical certificate</li>
+                    <li>Meticulous logbook maintenance for insurance verification</li>
+                    <li>Understanding of open-pilot warranty requirements</li>
+                    <li>Familiar with Part 91 operational requirements and limitations</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROFESSIONAL DEVELOPMENT TAB -->
+        <div id="development" class="tab-content">
+            <div class="info-section">
+                <h2>Current Qualifications</h2>
+                
+                <h3>Certificates & Ratings</h3>
+                <ul class="highlight-list">
+                    <li><strong>Commercial Pilot</strong> - Airplane Single Engine Land (January 2025)</li>
+                    <li><strong>Instrument Rating</strong> - Airplane</li>
+                    <li><strong>Private Pilot</strong> - Airplane Single Engine Land</li>
+                    <li><strong>FAA Medical:</strong> Class 2 (meets Part 91 requirements)</li>
+                </ul>
+
+                <h3>Aircraft Experience</h3>
+                <ul class="highlight-list">
+                    <li><strong>Glass Cockpit (TAA):</strong> 125+ hours in Garmin G1000 and similar systems</li>
+                    <li><strong>Complex Aircraft:</strong> 27.7 hours retractable gear operations</li>
+                    <li><strong>High Performance:</strong> Experience in Cessna 182 and high-density altitude operations</li>
+                    <li><strong>Multi-Engine:</strong> 17.2 hours in Tecnam P2006T (glass panel twin)</li>
+                    <li><strong>Cirrus-Style Systems:</strong> Familiar with Perspective avionics and advanced autopilot integration</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Transition Readiness</h2>
+                <p>Prepared for transition to high-performance single-engine and light jets:</p>
+                
+                <h3>Target Aircraft</h3>
+                <ul class="highlight-list">
+                    <li><strong>Cirrus SF50 Vision Jet:</strong> Natural progression from TAA experience, single-pilot jet operations</li>
+                    <li><strong>HondaJet HA-420:</strong> Light jet with excellent single-pilot handling characteristics</li>
+                    <li><strong>Pilatus PC-12:</strong> Turboprop transition, popular owner-flown aircraft</li>
+                    <li><strong>Piper M600:</strong> Pressurized single with advanced systems</li>
+                    <li><strong>TBM Series:</strong> High-performance turboprop for owner-operators</li>
+                </ul>
+
+                <h3>Current Study Focus</h3>
+                <ul class="highlight-list">
+                    <li>Turbine engine operations, systems, and limitations</li>
+                    <li>Jet aerodynamics and high-altitude operations</li>
+                    <li>Advanced autopilot and flight director operations</li>
+                    <li>Pressurization systems and oxygen requirements</li>
+                    <li>High-speed aerodynamics and swept-wing considerations</li>
+                    <li>Flight levels and RVSM operations</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Business Aviation Knowledge</h2>
+                <p>Understanding the unique aspects of corporate and owner operations:</p>
+                
+                <h3>Operational Considerations</h3>
+                <ul class="highlight-list">
+                    <li><strong>Scheduling Flexibility:</strong> Accommodate last-minute changes and extended trips</li>
+                    <li><strong>Passenger Service:</strong> Pre-flight briefings, comfort considerations, special requests</li>
+                    <li><strong>FBO Relations:</strong> Professional interactions with line service and facilities</li>
+                    <li><strong>Trip Planning:</strong> Hotel and ground transportation coordination when needed</li>
+                    <li><strong>International Operations:</strong> Customs, immigration, and international flight planning basics</li>
+                </ul>
+
+                <h3>Aircraft Management</h3>
+                <ul class="highlight-list">
+                    <li>Understanding maintenance schedules and owner expectations</li>
+                    <li>Coordinating with maintenance facilities for squawks and inspections</li>
+                    <li>Fuel planning for cost efficiency without compromising safety</li>
+                    <li>Hangar procedures and security considerations</li>
+                    <li>Insurance requirements and open-pilot warranties</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Ongoing Professional Development</h2>
+                <p>Committed to continuous learning and skill improvement:</p>
+                
+                <ul class="highlight-list">
+                    <li><strong>Type Rating Goals:</strong> Pursuing opportunities for jet type ratings (CE-525, HA-420, or SF50)</li>
+                    <li><strong>Recurrent Training:</strong> Committed to annual recurrent training in type-specific simulators</li>
+                    <li><strong>Advanced Ratings:</strong> Working toward multi-engine commercial and CFI certificates</li>
+                    <li><strong>Systems Study:</strong> Regular study of turbine aircraft systems and operations</li>
+                    <li><strong>Weather Expertise:</strong> Advanced meteorology and weather decision-making</li>
+                    <li><strong>Customer Service:</strong> Professional development in business aviation customer relations</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Professional Resources</h2>
+                <p>Active use of aviation education and networking resources:</p>
+                
+                <ul class="highlight-list">
+                    <li>FAA handbooks: Turbine Pilot's Flight Manual, High Altitude Flying</li>
+                    <li>NBAA (National Business Aviation Association) resources and webinars</li>
+                    <li>Turbine transition courses and online training</li>
+                    <li>Mentorship from experienced corporate and owner-flown pilots</li>
+                    <li>Aviation podcasts focused on business aviation (The Finer Points, Opposing Bases)</li>
+                    <li>Cirrus Approach training materials and online community</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Career Objectives</h2>
+                <p>Clear path focused on corporate and owner-operated aviation:</p>
+                
+                <ul class="highlight-list">
+                    <li><strong>Immediate:</strong> Contract pilot or co-pilot position in high-performance piston or turboprop</li>
+                    <li><strong>Near-term:</strong> Build turbine time and obtain type rating in light jet</li>
+                    <li><strong>Long-term:</strong> Primary pilot for owner-operated jet or corporate flight department</li>
+                    <li><strong>Philosophy:</strong> Build lasting relationships with aircraft owners, provide exceptional service</li>
+                    <li><strong>Growth:</strong> Become trusted advisor on aircraft operations, maintenance, and upgrades</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Why I'm Right for Corporate Aviation</h2>
+                <p>My background uniquely positions me for business aviation:</p>
+                
+                <ul class="highlight-list">
+                    <li><strong>Professional Experience:</strong> 5+ years in corporate environments with Fortune 500 clients</li>
+                    <li><strong>Analytical Skills:</strong> Data-driven decision making translates to flight planning and risk assessment</li>
+                    <li><strong>Customer Focus:</strong> Managed diverse stakeholders and delivered results under pressure</li>
+                    <li><strong>Attention to Detail:</strong> Research background requires precision and systematic approaches</li>
+                    <li><strong>Business Mindset:</strong> Understand the investment aircraft represents and treat accordingly</li>
+                    <li><strong>Communication:</strong> Explained complex concepts to non-technical audiences - same skill for passenger briefings</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ABOUT ME TAB -->
+        <div id="about" class="tab-content">
+            <div class="info-section">
+                <h2>Professional Background</h2>
+                <p>I bring a unique combination of corporate experience, analytical thinking, and aviation passion to professional flying. My background in data science, epidemiology, and project management has instilled strong analytical skills, attention to detail, and systematic decision-making - exactly what corporate aviation demands.</p>
+
+                <h3>Why Corporate Aviation</h3>
+                <p>Corporate aviation represents the perfect intersection of technical excellence, business professionalism, and personal client relationships. I'm drawn to the responsibility of operating high-performance aircraft for discerning owners who expect the highest standards. The opportunity to build long-term relationships with clients and treat their aircraft as my own aligns with my values of trust, professionalism, and excellence.</p>
+            </div>
+
+            <div class="info-section">
+                <h2>Professional Philosophy</h2>
+                <p>I approach flying with the same professionalism I brought to corporate environments:</p>
+                <ul class="highlight-list">
+                    <li><strong>Treat Every Aircraft as My Own:</strong> Meticulous care, conservative operations, proactive maintenance</li>
+                    <li><strong>Client Service Mindset:</strong> Passenger comfort and experience matter while never compromising safety</li>
+                    <li><strong>Discretion & Trust:</strong> Complete confidentiality and professional boundaries at all times</li>
+                    <li><strong>Systematic Approach:</strong> Data-driven decision making from analytical background</li>
+                    <li><strong>Continuous Excellence:</strong> Always looking for ways to improve operations and service</li>
+                    <li><strong>Business Understanding:</strong> Appreciate the investment aircraft represent and operate accordingly</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Working with Aircraft Owners</h2>
+                <p>My approach to owner relationships emphasizes trust and communication:</p>
+                
+                <h3>Communication Style</h3>
+                <ul class="highlight-list">
+                    <li>Clear, professional updates on aircraft status and operations</li>
+                    <li>Transparent about weather or maintenance issues affecting schedule</li>
+                    <li>Proactive problem-solving with solutions, not just problems</li>
+                    <li>Responsive to messages and requests</li>
+                    <li>Regular feedback on aircraft performance and any concerns</li>
+                </ul>
+
+                <h3>Operational Flexibility</h3>
+                <ul class="highlight-list">
+                    <li>Accommodate schedule changes and last-minute requests when safely possible</li>
+                    <li>Available for extended trips and varied schedules</li>
+                    <li>Coordinate ground transportation and logistics when needed</li>
+                    <li>Adapt to different passenger preferences and requirements</li>
+                    <li>Handle special requests professionally</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Corporate Experience Advantage</h2>
+                <p>My professional work history translates directly to corporate aviation:</p>
+                
+                <div class="badge">Data Scientist - Qualtrics (2022-Present)</div>
+                <div class="badge">Data Analyst - UCSF (2021-2022)</div>
+                <div class="badge">Research Assistant - Colorado School of Public Health (2019-2021)</div>
+                
+                <h3>Transferable Skills</h3>
+                <ul class="highlight-list">
+                    <li><strong>Project Management:</strong> Managed 50+ projects with diverse stakeholders - same skills for trip planning</li>
+                    <li><strong>Client Relations:</strong> Worked with Fortune 500 executives - understand professional expectations</li>
+                    <li><strong>Analytical Thinking:</strong> Data-driven decision making applies to flight planning and risk assessment</li>
+                    <li><strong>Attention to Detail:</strong> Research required extreme precision - translates to preflight and operations</li>
+                    <li><strong>Professional Communication:</strong> Explained complex concepts to non-technical audiences - passenger briefings</li>
+                    <li><strong>Regulatory Compliance:</strong> Ensured clinical trial audit compliance - understand importance of regulations</li>
+                    <li><strong>International Experience:</strong> Led team in Guatemala, served in Argentina - comfortable with diverse clients</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Education</h2>
+                <ul class="highlight-list">
+                    <li><strong>Master of Science</strong> - Epidemiology, Colorado School of Public Health (GPA: 3.87)</li>
+                    <li><strong>Bachelor of Science</strong> - Statistics, Brigham Young University (GPA: 3.76)</li>
+                    <li>Microbiology Minor, Spanish Certification (Fluent)</li>
+                    <li>Former EMT - understand medical considerations for passengers</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Personal Attributes</h2>
+                <p>Character traits that make me well-suited for corporate aviation:</p>
+                <ul class="highlight-list">
+                    <li><strong>Trustworthy:</strong> Complete discretion with client information and operations</li>
+                    <li><strong>Reliable:</strong> Punctual, prepared, and consistent in all operations</li>
+                    <li><strong>Professional:</strong> Appropriate appearance, communication, and conduct</li>
+                    <li><strong>Adaptable:</strong> Comfortable with varied schedules and changing requirements</li>
+                    <li><strong>Health-Conscious:</strong> Maintain physical fitness for demanding schedules</li>
+                    <li><strong>Service-Oriented:</strong> Background in healthcare and public service</li>
+                    <li><strong>Bilingual:</strong> Fluent Spanish for international operations and diverse clients</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Beyond Aviation</h2>
+                <p>Well-rounded background and interests:</p>
+                <ul class="highlight-list">
+                    <li>Outdoor enthusiast: Hiking, camping, appreciate the mountain environment where I fly</li>
+                    <li>International experience: Work and volunteer service in Latin America</li>
+                    <li>Community service: Medical interpretation, international health projects</li>
+                    <li>Technology: Comfortable with advanced avionics and software systems</li>
+                    <li>Family-oriented: Understand clients balancing work, family, and travel</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- CONTACT TAB -->
+        <div id="contact" class="tab-content">
+            <div class="info-section">
+                <h2>Get In Touch</h2>
+                <p>I'm actively seeking opportunities and would welcome the chance to discuss how my skills and experience align with your needs.</p>
+                
+                <div class="stats-grid" style="margin-top: 2rem;">
+                    <div class="stat-card">
+                        <div style="font-size: 1.2rem; color: #2a5298; margin-bottom: 0.5rem;">📧</div>
+                        <div style="font-weight: 600;">Email</div>
+                        <div style="margin-top: 0.5rem; word-break: break-all;">Jason.3.richards@gmail.com</div>
+                    </div>
+                    <div class="stat-card">
+                        <div style="font-size: 1.2rem; color: #2a5298; margin-bottom: 0.5rem;">📱</div>
+                        <div style="font-weight: 600;">Phone</div>
+                        <div style="margin-top: 0.5rem;">435-610-6179</div>
+                    </div>
+                    <div class="stat-card">
+                        <div style="font-size: 1.2rem; color: #2a5298; margin-bottom: 0.5rem;">📍</div>
+                        <div style="font-weight: 600;">Location</div>
+                        <div style="margin-top: 0.5rem;">Utah (willing to relocate)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>Download Resume</h2>
+                <p>Full resume available for download:</p>
+                <a href="#" class="cta-button">Download PDF Resume</a>
+                <p style="margin-top: 1rem; font-size: 0.9rem; color: #5a6c7d;">Updated January 2026</p>
+            </div>
+
+            <div class="info-section">
+                <h2>Positions of Interest</h2>
+                <ul class="highlight-list">
+                    <li><strong>Owner-Operated Aircraft:</strong> Primary or contract pilot for Cirrus, HondaJet, PC-12, TBM, or similar</li>
+                    <li><strong>Corporate Flight Departments:</strong> Co-pilot or SIC positions in light jets</li>
+                    <li><strong>Part 91 Operations:</strong> High-performance single or light twin operations</li>
+                    <li><strong>Contract Pilot Services:</strong> Fill-in or vacation coverage for owner-operators</li>
+                    <li><strong>Mentored Positions:</strong> Opportunities with experienced captains for turbine transition</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>Current Availability</h2>
+                <ul class="highlight-list">
+                    <li>Available for immediate start or with reasonable notice</li>
+                    <li>Willing to relocate anywhere in the United States</li>
+                    <li>Current on all medical and certificate requirements</li>
+                    <li>Open to full-time, contract, or per-diem opportunities</li>
+                </ul>
+            </div>
+
+            <div class="info-section">
+                <h2>References</h2>
+                <p>Professional references available upon request, including:</p>
+                <ul class="highlight-list">
+                    <li>Flight instructors from commercial and instrument training</li>
+                    <li>Professional references from data science career</li>
+                    <li>Character references from community service work</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Jason Richards. Professional Pilot Resume.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">This website pulls live data from my digital logbook for up-to-date flight time reporting.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tab switching functionality
+        function openTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove('active');
+            }
+            
+            // Remove active class from all buttons
+            const tabButtons = document.getElementsByClassName('tab-button');
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active');
+            }
+            
+            // Show the selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Load flight data from Google Sheets or local JSON
+        async function loadFlightData() {
+            try {
+                // In production, this would fetch from Google Sheets API
+                // For now, we'll use the local JSON file
+                const response = await fetch('flight_stats.json');
+                const data = await response.json();
+                
+                // Update stats on home page
+                document.getElementById('total-time').textContent = data.total_time;
+                document.getElementById('pic-time').textContent = data.pic;
+                document.getElementById('multi-time').textContent = data.multi_engine;
+                document.getElementById('instrument-time').textContent = data.instrument_total;
+                
+                // Update recent activity
+                document.getElementById('recent-hours').textContent = data.last_90_days;
+                document.getElementById('recent-flights').textContent = data.last_90_days_flights;
+                document.getElementById('jan-hours').textContent = data.monthly_hours['2026-01'] || '45.5';
+                
+                // Update last flight date
+                const lastFlight = new Date(data.most_recent_flight);
+                const options = { month: 'short', day: 'numeric', year: 'numeric' };
+                document.getElementById('last-flight-date').textContent = lastFlight.toLocaleDateString('en-US', options);
+                
+                // Update date stamps
+                const now = new Date();
+                document.getElementById('update-date').textContent = now.toLocaleDateString('en-US', options);
+                
+            } catch (error) {
+                console.log('Using static data - Google Sheets integration pending');
+            }
+        }
+
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', loadFlightData);
+    </script>
+</body>
+</html>
