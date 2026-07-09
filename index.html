@@ -378,10 +378,10 @@
                 <ul class="highlight-list">
                     <li><strong>Certificates:</strong> Commercial Single Engine Land, Instrument Airplane</li>
                     <li><strong>Active Flying:</strong> <span id="recent-hours">132.2</span> hours in last 90 days - <span id="recent-flights">56</span> flights demonstrating current proficiency</li>
-                    <li><strong>High-Performance Experience:</strong> 125+ hours TAA (glass cockpit), 27.7 hours complex aircraft time</li>
+                    <li><strong>High-Performance Experience:</strong> <span id="home-taa">125</span>+ hours TAA (glass cockpit), <span id="home-complex">27.7</span> hours complex aircraft time</li>
                     <li><strong>Professional Background:</strong> Data Scientist with analytical approach to flight operations and decision-making</li>
                     <li><strong>Business Aviation Ready:</strong> Professional communication, discretion, and customer service mindset</li>
-                    <li><strong>Insurance Friendly:</strong> 542.8 total hours, 477.2 PIC, strong instrument time, no incidents</li>
+                    <li><strong>Insurance Friendly:</strong> <span id="home-total">542.8</span> total hours, <span id="home-pic">477.2</span> PIC, strong instrument time, no incidents</li>
                 </ul>
 
                 <h3>Value Proposition for Aircraft Owners</h3>
@@ -405,35 +405,35 @@
 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-value">542.8</div>
+                        <div class="stat-value" id="exp-total-time">542.8</div>
                         <div class="stat-label">Total Time</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">477.2</div>
+                        <div class="stat-value" id="exp-pic-time">477.2</div>
                         <div class="stat-label">PIC</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">113.5</div>
+                        <div class="stat-value" id="exp-night-time">113.5</div>
                         <div class="stat-label">Night</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">156.4</div>
+                        <div class="stat-value" id="exp-xc-time">156.4</div>
                         <div class="stat-label">Cross Country</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">156.9</div>
+                        <div class="stat-value" id="exp-instrument-time">156.9</div>
                         <div class="stat-label">Instrument</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">17.2</div>
+                        <div class="stat-value" id="exp-multi-time">17.2</div>
                         <div class="stat-label">Multi-Engine</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">27.7</div>
+                        <div class="stat-value" id="exp-complex-time">27.7</div>
                         <div class="stat-label">Complex</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">125.4</div>
+                        <div class="stat-value" id="exp-taa-time">125.4</div>
                         <div class="stat-label">TAA/Glass</div>
                     </div>
                 </div>
@@ -442,22 +442,22 @@
             <div class="info-section">
                 <h2>Recent Flight Activity</h2>
                 <p>Consistent flying demonstrates active proficiency and currency.</p>
-                
+
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-value">75.2</div>
+                        <div class="stat-value" id="exp-last30-hours">75.2</div>
                         <div class="stat-label">Last 30 Days</div>
-                        <div class="aircraft-hours">28 flights</div>
+                        <div class="aircraft-hours"><span id="exp-last30-flights">28</span> flights</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">132.2</div>
+                        <div class="stat-value" id="exp-last90-hours">132.2</div>
                         <div class="stat-label">Last 90 Days</div>
-                        <div class="aircraft-hours">56 flights</div>
+                        <div class="aircraft-hours"><span id="exp-last90-flights">56</span> flights</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-value">203.4</div>
+                        <div class="stat-value" id="exp-last12mo-hours">203.4</div>
                         <div class="stat-label">Last 12 Months</div>
-                        <div class="aircraft-hours">102 flights</div>
+                        <div class="aircraft-hours"><span id="exp-last12mo-flights">102</span> flights</div>
                     </div>
                 </div>
             </div>
@@ -465,8 +465,8 @@
             <div class="info-section">
                 <h2>Aircraft Experience</h2>
                 <p>Primary aircraft types with total hours in each:</p>
-                
-                <div class="aircraft-grid">
+
+                <div class="aircraft-grid" id="aircraft-grid">
                     <div class="aircraft-item">
                         <div class="aircraft-name">PA-28 Cherokee (N427R)</div>
                         <div class="aircraft-hours">82.5 hours</div>
@@ -546,11 +546,11 @@
 
                 <h3>Aircraft Experience</h3>
                 <ul class="highlight-list">
-                    <li><strong>Glass Cockpit (TAA):</strong> 125+ hours in Garmin G1000 and similar systems</li>
-                    <li><strong>Complex Aircraft:</strong> 27.7 hours retractable gear operations</li>
+                    <li><strong>Glass Cockpit (TAA):</strong> <span id="dev-taa">125</span>+ hours in Garmin G1000 and similar systems</li>
+                    <li><strong>Complex Aircraft:</strong> <span id="dev-complex">27.7</span> hours retractable gear operations</li>
                     <li><strong>High Performance:</strong> Experience in Cessna 182 and high-density altitude operations</li>
-                    <li><strong>Multi-Engine:</strong> 17.2 hours in Tecnam P2006T (glass panel twin)</li>
-                    <li><strong>Instrument:</strong> 156.9 hours simulated/actual instrument time</li>
+                    <li><strong>Multi-Engine:</strong> <span id="dev-multi">17.2</span> hours in Tecnam P2006T (glass panel twin)</li>
+                    <li><strong>Instrument:</strong> <span id="dev-instrument">156.9</span> hours simulated/actual instrument time</li>
                 </ul>
             </div>
 
@@ -757,31 +757,67 @@
             try {
                 // In production, this would fetch from Google Sheets API
                 // For now, we'll use the local JSON file
-                const response = await fetch('flight_stats.json');
+                const response = await fetch('flight_stats.json?v=' + Date.now(), { cache: 'no-store' });
                 const data = await response.json();
-                
+
                 // Update stats on home page
                 document.getElementById('total-time').textContent = data.total_time;
                 document.getElementById('pic-time').textContent = data.pic;
                 document.getElementById('multi-time').textContent = data.multi_engine;
                 document.getElementById('instrument-time').textContent = data.instrument_total;
-                
+
                 // Update recent activity
                 document.getElementById('recent-hours').textContent = data.last_90_days;
                 document.getElementById('recent-flights').textContent = data.last_90_days_flights;
-                document.getElementById('jan-hours').textContent = data.monthly_hours['2026-01'] || '45.5';
-                
-                // Update last flight date
+
+                // Update home page highlight bullets
+                document.getElementById('home-taa').textContent = Math.floor(data.taa);
+                document.getElementById('home-complex').textContent = data.complex;
+                document.getElementById('home-total').textContent = data.total_time;
+                document.getElementById('home-pic').textContent = data.pic;
+
+                // Update Flight Experience tab stat cards
+                document.getElementById('exp-total-time').textContent = data.total_time;
+                document.getElementById('exp-pic-time').textContent = data.pic;
+                document.getElementById('exp-night-time').textContent = data.night;
+                document.getElementById('exp-xc-time').textContent = data.cross_country;
+                document.getElementById('exp-instrument-time').textContent = data.instrument_total;
+                document.getElementById('exp-multi-time').textContent = data.multi_engine;
+                document.getElementById('exp-complex-time').textContent = data.complex;
+                document.getElementById('exp-taa-time').textContent = data.taa;
+
+                // Update Flight Experience tab recent activity cards
+                document.getElementById('exp-last30-hours').textContent = data.last_30_days;
+                document.getElementById('exp-last30-flights').textContent = data.last_30_days_flights;
+                document.getElementById('exp-last90-hours').textContent = data.last_90_days;
+                document.getElementById('exp-last90-flights').textContent = data.last_90_days_flights;
+                document.getElementById('exp-last12mo-hours').textContent = data.last_12_months;
+                document.getElementById('exp-last12mo-flights').textContent = data.last_12_months_flights;
+
+                // Rebuild aircraft experience grid from live data
+                const aircraftGrid = document.getElementById('aircraft-grid');
+                if (aircraftGrid && data.aircraft_types) {
+                    aircraftGrid.innerHTML = Object.entries(data.aircraft_types).map(([name, hours]) => `
+                        <div class="aircraft-item">
+                            <div class="aircraft-name">${name}</div>
+                            <div class="aircraft-hours">${hours} hours</div>
+                        </div>
+                    `).join('');
+                }
+
+                // Update Professional Development tab bullets
+                document.getElementById('dev-taa').textContent = Math.floor(data.taa);
+                document.getElementById('dev-complex').textContent = data.complex;
+                document.getElementById('dev-multi').textContent = data.multi_engine;
+                document.getElementById('dev-instrument').textContent = data.instrument_total;
+
+                // Update date stamps
                 const lastFlight = new Date(data.most_recent_flight);
                 const options = { month: 'short', day: 'numeric', year: 'numeric' };
-                document.getElementById('last-flight-date').textContent = lastFlight.toLocaleDateString('en-US', options);
-                
-                // Update date stamps
-                const now = new Date();
-                document.getElementById('update-date').textContent = now.toLocaleDateString('en-US', options);
-                
+                document.getElementById('update-date').textContent = lastFlight.toLocaleDateString('en-US', options);
+
             } catch (error) {
-                console.log('Using static data - Google Sheets integration pending');
+                console.log('Using static data - error loading flight_stats.json:', error);
             }
         }
 
